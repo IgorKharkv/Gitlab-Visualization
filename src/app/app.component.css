@@ -1,11 +1,3 @@
-.Main {
-  max-width: 22%;
-  margin: 0 auto;
-  font-size: 27px;
-  line-height: 15%;
-  font-family: "Times New Roman", Times, serif;
-}
-
 .title{
-  display: flex;
+  text-align: center;
 }
