@@ -3,13 +3,21 @@ import { NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
 import { AppComponent } from './app.component';
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatMenuModule} from '@angular/material/menu';
-import {HttpClientModule} from "@angular/common/http";
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {HttpClientModule} from '@angular/common/http';
+
+import {MergeRequestCardComponent} from './merge-request-card/merge-request-card.component';
+import { TeamTabComponent } from './team-tab/team-tab.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    MergeRequestCardComponent,
+    TeamTabComponent
   ],
   imports: [
     BrowserModule,
@@ -18,6 +26,8 @@ import {HttpClientModule} from "@angular/common/http";
     MatMenuModule,
     MatCardModule,
     MatTabsModule,
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
