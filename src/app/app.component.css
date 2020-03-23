@@ -7,5 +7,5 @@
 }
 
 .title{
-  display: -webkit-inline-box;
+  display: flex;
 }
