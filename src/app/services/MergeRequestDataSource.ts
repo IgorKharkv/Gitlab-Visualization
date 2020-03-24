@@ -5,7 +5,7 @@ import {GitApiService} from './git-api.service';
 
 export class MergeRequestDataSource extends DataSource<MergeRequest | undefined> {
 
-  private pageSize = 10;
+  private pageSize = 1;
   private lastPage = 0;
   public cachedMergeRequests = Array.from<MergeRequest>({ length: 0 });
   public dataStream = new BehaviorSubject<(MergeRequest | undefined)[]>(this.cachedMergeRequests);
@@ -15,16 +15,16 @@ export class MergeRequestDataSource extends DataSource<MergeRequest | undefined>
     super();
 
     // Start with some data.
-    this._fetchFactPage();
+    this._fetchFactPage(0);
   }
 
   connect(collectionViewer: CollectionViewer): Observable<(MergeRequest | undefined)[] | ReadonlyArray<MergeRequest | undefined>> {
     this.subscription.add(collectionViewer.viewChange.subscribe(range => {
       const currentPage = this._getPageForIndex(range.end);
-
       if (currentPage > this.lastPage) {
         this.lastPage = currentPage;
-        this._fetchFactPage();
+        console.log(currentPage);
+        this._fetchFactPage(currentPage);
       }
     }));
     return this.dataStream;
@@ -34,9 +34,9 @@ export class MergeRequestDataSource extends DataSource<MergeRequest | undefined>
     this.subscription.unsubscribe();
   }
 
-  private _fetchFactPage(): void {
+  private _fetchFactPage(range: number): void {
     for (let i = 0; i < this.pageSize; ++i) {
-      this.api.mergeRequests().subscribe(res => {
+      this.api.mergeRequests(range).subscribe(res => {
         this.cachedMergeRequests = this.cachedMergeRequests.concat(res);
         this.dataStream.next(this.cachedMergeRequests);
       });
@@ -44,6 +44,6 @@ export class MergeRequestDataSource extends DataSource<MergeRequest | undefined>
   }
 
   private _getPageForIndex(i: number): number {
-    return Math.floor(i / this.pageSize);
+    return Math.floor(i / (this.pageSize * 2));
   }
 }

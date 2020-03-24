@@ -1,25 +1,12 @@
 .merge-request {
   margin: 1rem;
-  width: 60%;
+  width: 10vh;
 }
 
 .merge-requests-container {
-  width: 100%;
+  height: 75vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 1%;
-}
-
-.fact-scroll-viewport {
-  height: 75vh;
-  width: 200vh;
-}
-
-cdk-virtual-scroll-viewport {
-  border: 1px solid black;
-
-li {
-  list-style: none;
-}
 }
