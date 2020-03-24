@@ -8,11 +8,11 @@ import {HttpClient} from '@angular/common/http';
 })
 export class GitApiService {
 
-  private gitUrl = 'https://gitlab.com/api/v4/projects/4180516/merge_requests';
+  private gitUrl = 'https://gitlab.com/api/v4/projects/4180516/merge_requests?order_by=created_at&sort=asc&state=opened';
 
   constructor(private http: HttpClient) { }
 
   public mergeRequests(page: number): Observable<MergeRequest[]> {
-    return this.http.get<MergeRequest[]>(this.gitUrl + '?per_page=5&page=' + page);
+    return this.http.get<MergeRequest[]>(this.gitUrl + '&per_page=5&page=' + page);
   }
 }
