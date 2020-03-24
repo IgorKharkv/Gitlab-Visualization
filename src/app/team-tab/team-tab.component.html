@@ -1,3 +1,8 @@
-<div class="merge-requests-container">
-    <app-merge-request-card *ngFor="let mr of (api.mergeRequests$ | async)" [mergeRequest]="mr" class="merge-request"></app-merge-request-card>
-</div>
+<cdk-virtual-scroll-viewport
+  itemSize="100"
+  class="merge-requests-container">
+  <app-merge-request-card *cdkVirtualFor="let mr of dataSource" [mergeRequest]="mr"
+                          class="merge-request">
+  </app-merge-request-card>
+</cdk-virtual-scroll-viewport>
+

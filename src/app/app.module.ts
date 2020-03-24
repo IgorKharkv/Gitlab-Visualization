@@ -8,7 +8,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {HttpClientModule} from '@angular/common/http';
-
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import {MergeRequestCardComponent} from './merge-request-card/merge-request-card.component';
 import { TeamTabComponent } from './team-tab/team-tab.component';
 
@@ -20,6 +20,7 @@ import { TeamTabComponent } from './team-tab/team-tab.component';
     TeamTabComponent
   ],
   imports: [
+    ScrollingModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
