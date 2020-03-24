@@ -1,0 +1,9 @@
+.merge-request {
+  margin: 1rem;
+}
+
+.merge-requests-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
