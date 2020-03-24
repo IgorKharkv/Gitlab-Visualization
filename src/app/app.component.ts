@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   constructor(private api: GitApiService) {}
 
   ngOnInit() {
-    this.api.init();
+    //this.api.init();
   }
 }
 

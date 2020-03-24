@@ -18,7 +18,7 @@ export class GitApiService {
     this.mergeRequests();
   }
 
-  private mergeRequests() {
-    this.mergeRequests$ = this.http.get<MergeRequest[]>(this.gitUrl);
+  public mergeRequests(): Observable<MergeRequest[]> {
+    return this.http.get<MergeRequest[]>(this.gitUrl);
   }
 }
