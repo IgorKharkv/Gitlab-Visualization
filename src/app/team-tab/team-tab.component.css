@@ -1,8 +1,10 @@
 .merge-request {
   margin: 1rem;
+  width: 60%;
 }
 
 .merge-requests-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

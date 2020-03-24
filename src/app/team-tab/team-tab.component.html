@@ -1,5 +1,3 @@
 <div class="merge-requests-container">
-  <div *ngFor="let mr of (api.mergeRequests$ | async)">
-    <app-merge-request-card [mergeRequest]="mr" class="merge-request"></app-merge-request-card>
-  </div>
+    <app-merge-request-card *ngFor="let mr of (api.mergeRequests$ | async)" [mergeRequest]="mr" class="merge-request"></app-merge-request-card>
 </div>
