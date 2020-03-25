@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.api.init();
+    localStorage.setItem('token', 'omZaSY_Ymu-HgE8UnsBc');
   }
 }
 

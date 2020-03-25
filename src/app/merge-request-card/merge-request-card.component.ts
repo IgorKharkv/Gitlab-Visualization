@@ -28,6 +28,8 @@ export class MergeRequestCardComponent implements OnInit {
       backgroundImage: 'url(\'' + this.mergeRequest.author.avatar_url + '\')',
       backgroundSize: 'cover',
     };
+    console.log('amountOfDiscussions :' + this.mergeRequest.amountOfDiscussions);
+    console.log('amountOfDiscussionsResolved :' + this.mergeRequest.amountOfDiscussionsResolved);
 
     // Calculate the time the MR is waiting
     const timeInDate = new Date(Date.now() - new Date(this.mergeRequest.created_at).valueOf());
