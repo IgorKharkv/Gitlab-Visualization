@@ -1,12 +1,13 @@
-import {Component, Input, OnInit, Pipe, PipeTransform} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {MergeRequest} from '../models/merge-request';
-import {GitApiService} from '../services/git-api.service';
-import {map} from 'rxjs/operators';
-
 
 const RED_COLOR = '#ff0000';
 const YELLOW_COLOR = '#e1ef0a';
 const GREEN_COLOR = '#17b817';
+
+const HAPPY_FACE = 'happy';
+const SAD_FACE = 'sad';
+const ANGRY_FACE = 'angry';
 
 @Component({
   selector: 'app-merge-request-card',
@@ -19,16 +20,12 @@ export class MergeRequestCardComponent implements OnInit {
   waitTime: string;
   avatarStyle: any;
   timeStyle: any;
+  imageURL: string;
 
   constructor() {
   }
 
   ngOnInit() {
-    this.avatarStyle = {
-      backgroundImage: 'url(\'' + this.mergeRequest.author.avatar_url + '\')',
-      backgroundSize: 'cover',
-    };
-
     // Calculate the time the MR is waiting
     const timeInDate = new Date(Date.now() - new Date(this.mergeRequest.created_at).valueOf());
     const days = Math.floor(timeInDate.valueOf() / 86400000);
@@ -39,11 +36,26 @@ export class MergeRequestCardComponent implements OnInit {
       color: (days >= 2 ? (days > 4 ? RED_COLOR : YELLOW_COLOR) : GREEN_COLOR),
       fontWeight: 'bold'
     };
+
+    this.avatarStyle = {
+      backgroundImage: 'url(\'' + this.mergeRequest.author.avatar_url + '\')',
+      backgroundSize: 'cover',
+      width: '4rem',
+      height: '4rem'
+    };
+
+    const face = this.timeStyle.color === GREEN_COLOR ? HAPPY_FACE : (this.timeStyle.color === YELLOW_COLOR ? SAD_FACE : ANGRY_FACE);
+    this.imageURL = '../../assets/emojis/' + this.mergeRequest.author.name.split(' ')[0] + '-' + face + '.webp';
   }
 
 
   onNavigate() {
     window.open(this.mergeRequest.web_url, '_blank');
+  }
+
+  changeEmoji(event) {
+    const face = this.timeStyle.color === GREEN_COLOR ? HAPPY_FACE : (this.timeStyle.color === YELLOW_COLOR ? SAD_FACE : ANGRY_FACE);
+    event.target.src = '../../assets/emojis/ido-' + face + '.webp';
   }
 
 }

@@ -1,0 +1,17 @@
+.card-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.emoji-image {
+  width: 100%;
+}
+
+.emoji-div {
+  width: 20%;
+}
+
+.card-details {
+  width: 80%;
+}
