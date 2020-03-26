@@ -20,7 +20,7 @@
       <p [ngStyle]="timeStyle">
         Waiting for: {{waitTime}}
       </p>
-      <p class="discussions-div" *ngIf="mergeRequest.amountOfResolvableDiscussions !== 0">
+      <p class="discussions-div" *ngIf="mergeRequest.amountOfResolvableDiscussions">
         Resolved
         discussions: {{mergeRequest.amountOfResolvableDiscussionsResolved + '/' + mergeRequest.amountOfResolvableDiscussions}}
         <mat-icon class="check-icon"
