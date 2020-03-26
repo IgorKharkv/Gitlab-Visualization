@@ -13,7 +13,7 @@ const DISCUSSIONS_PER_PAGE = 100;
 export class GitApiService {
 
   private gitUrl = 'https://gitlab.com/api/v4';
-  private groupUrl = this.gitUrl + '/groups/7513840/merge_requests';
+  private groupUrl = this.gitUrl + '/groups/7513840/merge_requests?state=opened&order_by=created_at&sort=asc&per_page=' + DISCUSSIONS_PER_PAGE;
 
   mergeRequests$: Observable<MergeRequest[]>;
 
