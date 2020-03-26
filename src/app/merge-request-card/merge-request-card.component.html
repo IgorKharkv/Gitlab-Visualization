@@ -20,6 +20,9 @@
       <p [ngStyle]="timeStyle">
         Waiting for: {{waitTime}}
       </p>
+      <p>
+        Resolved discussions: {{mergeRequest.amountOfResolvableDiscussionsResolved + '/' + mergeRequest.amountOfResolvableDiscussions}}
+      </p>
     </div>
     <div class="emoji-div">
       <img class="emoji-image" [src]="imageURL" (error)="changeEmoji($event)" />
