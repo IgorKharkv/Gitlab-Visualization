@@ -4,6 +4,7 @@ import {MergeRequest} from '../models/merge-request';
 import {HttpClient} from '@angular/common/http';
 import {map, mergeMap} from 'rxjs/operators';
 import {Discussion} from '../models/discussion';
+import {project} from '../../environments/project-id';
 
 const DISCUSSIONS_PER_PAGE = 100;
 
@@ -12,8 +13,9 @@ const DISCUSSIONS_PER_PAGE = 100;
 })
 export class GitApiService {
 
+  private projectId = project.id;
   private gitUrl = 'https://gitlab.com/api/v4';
-  private groupUrl = `${this.gitUrl}/groups/7513840/merge_requests?state=opened&order_by=created_at&sort=asc&per_page=${DISCUSSIONS_PER_PAGE}`;
+  private groupUrl = `${this.gitUrl}/groups/${this.projectId}/merge_requests?state=opened&order_by=created_at&sort=asc&per_page=${DISCUSSIONS_PER_PAGE}`;
 
   mergeRequests$: Observable<MergeRequest[]>;
 
