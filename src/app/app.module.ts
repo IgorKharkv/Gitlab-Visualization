@@ -7,10 +7,11 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 import {MergeRequestCardComponent} from './merge-request-card/merge-request-card.component';
 import { TeamTabComponent } from './team-tab/team-tab.component';
+import {TokenInterceptor} from './services/http-interceptor';
 
 
 @NgModule({
@@ -29,7 +30,9 @@ import { TeamTabComponent } from './team-tab/team-tab.component';
     MatButtonModule,
     MatIconModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

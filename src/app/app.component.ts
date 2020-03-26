@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {GitApiService} from './services/git-api.service';
-import {MergeRequest} from './models/merge-request';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +13,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.api.init();
+    localStorage.setItem('token', 'omZaSY_Ymu-HgE8UnsBc');
   }
 }
 

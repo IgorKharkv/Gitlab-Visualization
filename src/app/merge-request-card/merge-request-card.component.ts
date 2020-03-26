@@ -1,8 +1,5 @@
-import {Component, Input, OnInit, Pipe, PipeTransform} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {MergeRequest} from '../models/merge-request';
-import {GitApiService} from '../services/git-api.service';
-import {map} from 'rxjs/operators';
-
 
 const RED_COLOR = '#ff0000';
 const YELLOW_COLOR = '#e1ef0a';

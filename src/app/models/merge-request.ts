@@ -16,4 +16,6 @@ export interface MergeRequest {
   author: User;
   work_in_progress: boolean;
   web_url: string;
+  amountOfResolvableDiscussions: number;
+  amountOfResolvableDiscussionsResolved: number;
 }
