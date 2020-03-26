@@ -10,4 +10,15 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  overflow-y: scroll;
+}
+
+#style-6::-webkit-scrollbar
+ {
+   width: 10px;
+ }
+
+#style-6::-webkit-scrollbar-thumb
+{
+  background-color: #F90;
 }
