@@ -12,7 +12,8 @@ const DISCUSSIONS_PER_PAGE = 100;
 })
 export class GitApiService {
 
-  private gitUrl = 'https://gitlab.com/api/v4/projects/17725518/merge_requests';
+  private gitUrl = 'https://gitlab.com/api/v4';
+  private groupUrl = this.gitUrl + '/groups/7513840/merge_requests';
 
   mergeRequests$: Observable<MergeRequest[]>;
 
@@ -23,7 +24,7 @@ export class GitApiService {
   }
 
   private mergeRequests() {
-    this.mergeRequests$ = this.http.get<MergeRequest[]>(this.gitUrl).pipe(mergeMap( mergeRequests =>
+    this.mergeRequests$ = this.http.get<MergeRequest[]>(this.groupUrl).pipe(mergeMap( mergeRequests =>
       forkJoin(
         mergeRequests.map(mergeRequest =>
             this.getDiscussions(mergeRequest)
@@ -35,7 +36,7 @@ export class GitApiService {
   private getDiscussions(mergeRequest: MergeRequest) {
     let amountOfResolvableDiscussions = 0;
     let amountOfResolvableDiscussionsResolved = 0;
-    return this.http.get<Discussion[]>(this.gitUrl + `/${mergeRequest.iid}/discussions?per_page=${DISCUSSIONS_PER_PAGE}`).pipe(
+    return this.http.get<Discussion[]>(this.gitUrl + `/projects/${mergeRequest.project_id}/merge_requests/${mergeRequest.iid}/discussions?per_page=${DISCUSSIONS_PER_PAGE}`).pipe(
       map(discussions => {
           discussions.forEach(discussion => {
             discussion.notes.forEach(note => {
