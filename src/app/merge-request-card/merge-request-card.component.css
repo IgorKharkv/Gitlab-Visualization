@@ -4,8 +4,14 @@
   justify-content: space-between;
 }
 
+.mat-h1 {
+  font-weight: 500;
+}
+
 .mat-h3 {
   display: flex;
+  margin-bottom: 0%;
+  margin-top: 1rem;
 }
 
 .emoji-image {
