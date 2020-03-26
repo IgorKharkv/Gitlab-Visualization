@@ -38,10 +38,12 @@ export class GitApiService {
     return this.http.get<Discussion[]>(this.gitUrl + `/${mergeRequest.iid}/discussions?per_page=${DISCUSSIONS_PER_PAGE}`).pipe(
       map(discussions => {
           discussions.forEach(discussion => {
-            amountOfDiscussions += discussion.notes.length;
             discussion.notes.forEach(note => {
-              if ((note as any).resolvable && (note as any).resolved) {
-                amountOfDiscussionsResolved ++;
+              if ((note as any).resolvable) {
+                amountOfDiscussions ++;
+                if ((note as any).resolved) {
+                  amountOfDiscussionsResolved++;
+                }
               }
             });
             }
