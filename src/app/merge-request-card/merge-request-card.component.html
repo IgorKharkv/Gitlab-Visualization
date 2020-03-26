@@ -20,9 +20,20 @@
       <p [ngStyle]="timeStyle">
         Waiting for: {{waitTime}}
       </p>
+      <p class="discussions-div" *ngIf="mergeRequest.amountOfResolvableDiscussions">
+        Resolved
+        discussions: {{mergeRequest.amountOfResolvableDiscussionsResolved + '/' + mergeRequest.amountOfResolvableDiscussions}}
+        <mat-icon class="check-icon"
+                  *ngIf="mergeRequest.amountOfResolvableDiscussionsResolved === mergeRequest.amountOfResolvableDiscussions; else warningIcon">
+          check_circle
+        </mat-icon>
+        <ng-template #warningIcon>
+          <mat-icon class="warning-icon">warning</mat-icon>
+        </ng-template>
+      </p>
     </div>
     <div class="emoji-div">
-      <img class="emoji-image" [src]="imageURL" (error)="changeEmoji($event)" />
+      <img class="emoji-image" [src]="imageURL" (error)="changeEmoji($event)"/>
     </div>
   </mat-card-content>
   <mat-card-actions>
