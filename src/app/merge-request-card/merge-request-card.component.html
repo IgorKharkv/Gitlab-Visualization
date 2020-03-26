@@ -4,21 +4,26 @@
     <mat-card-title>{{'@' + mergeRequest.author.username}}</mat-card-title>
     <mat-card-subtitle>{{mergeRequest.author.name}}</mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content>
-    <span class="mat-h3" style="display: flex">
+  <mat-card-content class="card-content">
+    <div class="card-details">
+    <span class="mat-h3">
       {{mergeRequest.source_branch}}
       <mat-icon>arrow_forward</mat-icon>
       {{mergeRequest.target_branch}}
     </span>
-    <p class="mat-h2" (click)="onNavigate()">
-      {{mergeRequest.title}}
-    </p>
-    <p>
-      {{mergeRequest.description}}
-    </p>
-    <p [ngStyle]="timeStyle">
-      Waiting for: {{waitTime}}
-    </p>
+      <p class="mat-h2" (click)="onNavigate()">
+        {{mergeRequest.title}}
+      </p>
+      <p>
+        {{mergeRequest.description}}
+      </p>
+      <p [ngStyle]="timeStyle">
+        Waiting for: {{waitTime}}
+      </p>
+    </div>
+    <div class="emoji-div">
+      <img class="emoji-image" [src]="imageURL" (error)="changeEmoji($event)" />
+    </div>
   </mat-card-content>
   <mat-card-actions>
     <button mat-button (click)="onNavigate()">
