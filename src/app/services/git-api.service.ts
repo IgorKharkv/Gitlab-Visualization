@@ -13,7 +13,7 @@ const DISCUSSIONS_PER_PAGE = 100;
 export class GitApiService {
 
   private gitUrl = 'https://gitlab.com/api/v4';
-  private groupUrl = this.gitUrl + '/groups/7513840/merge_requests?state=opened&order_by=created_at&sort=asc&per_page=' + DISCUSSIONS_PER_PAGE;
+  private groupUrl = `${this.gitUrl}/groups/7513840/merge_requests?state=opened&order_by=created_at&sort=asc&per_page=${DISCUSSIONS_PER_PAGE}`;
 
   mergeRequests$: Observable<MergeRequest[]>;
 
@@ -36,7 +36,7 @@ export class GitApiService {
   private getDiscussions(mergeRequest: MergeRequest) {
     let amountOfResolvableDiscussions = 0;
     let amountOfResolvableDiscussionsResolved = 0;
-    return this.http.get<Discussion[]>(this.gitUrl + `/projects/${mergeRequest.project_id}/merge_requests/${mergeRequest.iid}/discussions?per_page=${DISCUSSIONS_PER_PAGE}`).pipe(
+    return this.http.get<Discussion[]>( `${this.gitUrl}/projects/${mergeRequest.project_id}/merge_requests/${mergeRequest.iid}/discussions?per_page=${DISCUSSIONS_PER_PAGE}`).pipe(
       map(discussions => {
           discussions.forEach(discussion => {
             discussion.notes.forEach(note => {
