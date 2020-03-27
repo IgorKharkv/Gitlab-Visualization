@@ -28,8 +28,9 @@ export class MergeRequestCardComponent implements OnInit {
   ngOnInit() {
     // Calculate the time the MR is waiting
     const timeInDate = new Date(Date.now() - new Date(this.mergeRequest.created_at).valueOf());
-    const days = Math.floor(timeInDate.valueOf() / 86400000);
-    this.waitTime = (days === 1 ? '1 day' : days + ' days') + ' and ' + timeInDate.getHours() + ' hours';
+    const hours = Math.floor((timeInDate.valueOf() / 3600000) % 24);
+    const days = Math.floor((timeInDate.valueOf() / 3600000) / 24);
+    this.waitTime = (days === 1 ? '1 day' : days + ' days') + ' and ' + hours + ' hours';
 
     // Change the color according to the time
     this.timeStyle = {
