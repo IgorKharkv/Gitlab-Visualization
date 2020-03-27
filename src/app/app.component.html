@@ -4,16 +4,21 @@
 
 <div>
 
-  <mat-tab-group mat-align-tabs="center">
+  <mat-tab-group mat-align-tabs="center" *ngIf="(api.mergeRequests$ | async) as mergeRequests; else loadingGif">
 
     <mat-tab label="צוות הלל">
-      <app-team-tab [team]="'Hallel'"></app-team-tab>
+      <app-team-tab [team]="'Hallel'" [mergeRequests]="mergeRequests"></app-team-tab>
     </mat-tab>
 
     <mat-tab label="צוות פסקל">
-      <app-team-tab [team]="'Pascal'"></app-team-tab>
+      <app-team-tab [team]="'Pascal'" [mergeRequests]="mergeRequests"></app-team-tab>
     </mat-tab>
 
   </mat-tab-group>
+  <ng-template #loadingGif>
+    <div class="loading-gif">
+      <img src="../assets/loading.gif" width="60%"/>
+    </div>
+  </ng-template>
 
 </div>
