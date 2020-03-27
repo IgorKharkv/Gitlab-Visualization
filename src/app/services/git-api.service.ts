@@ -4,7 +4,7 @@ import {MergeRequest} from '../models/merge-request';
 import {HttpClient} from '@angular/common/http';
 import {map, mergeMap} from 'rxjs/operators';
 import {Discussion} from '../models/discussion';
-import {project} from '../../environments/project-id';
+import {project} from '../../environments/configuration';
 
 const DISCUSSIONS_PER_PAGE = 100;
 
