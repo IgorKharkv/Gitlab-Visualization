@@ -46,7 +46,11 @@ export class MergeRequestCardComponent implements OnInit {
     };
 
     const face = this.timeStyle.color === GREEN_COLOR ? HAPPY_FACE : (this.timeStyle.color === YELLOW_COLOR ? SAD_FACE : ANGRY_FACE);
-    this.imageURL = '../../assets/emojis/' + this.mergeRequest.author.name.split(' ')[0] + '-' + face + '.webp';
+    this.imageURL = '../../assets/emojis/' + this.mergeRequest.author.name.toLowerCase().split(' ')[0] + '-' + face + '.webp';
+
+    if (this.mergeRequest.author.name === 'Ido Henri Mamia' && (new Date()).getDate() === 28 && (new Date()).getMonth() === 2) {
+      this.mergeRequest.author.name = 'Happy birthday Ido!';
+    }
   }
 
 

@@ -8,7 +8,7 @@ import {MergeRequest} from '../models/merge-request';
   templateUrl: './team-tab.component.html',
   styleUrls: ['./team-tab.component.css']
 })
-export class TeamTabComponent implements OnChanges {
+export class TeamTabComponent implements OnInit {
 
   @Input() team: string;
   @Input() mergeRequests: MergeRequest[];
@@ -16,10 +16,8 @@ export class TeamTabComponent implements OnChanges {
   constructor() {
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (this.mergeRequests) {
-      this.mergeRequests = this.mergeRequests.filter(mr => this.getTeamMembers().find(member => member === mr.author.username));
-    }
+  ngOnInit(): void {
+    this.mergeRequests = this.mergeRequests.filter(mr => this.getTeamMembers().find(member => member === mr.author.username));
   }
 
   getTeamMembers(): string[] {
